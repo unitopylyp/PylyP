@@ -241,9 +241,9 @@ else:
 							print("\t\tAt line: ", n.lineno)
 							print("\t\tThe target variable or the iter variable of the for statement \n\t\tis changed in the body or in the body of the else\n")
 						is_reversible = False
-			is_reversible  = is_reversible and is_close_symtable.get(super_n.name)
-			if comments:
-				print("\t\tThe function \"" + super_n.name + "\" is not closed\n")			  
+			if comments and not is_close_symtable.get(super_n.name):
+				print("\t\tThe function \"" + super_n.name + "\" is not closed\n")
+			is_reversible  = is_reversible and is_close_symtable.get(super_n.name)			  
 			print("\t\tFunction: \"" + super_n.name + "\", reversibility:", is_reversible)
 			print("\t</" + super_n.name + ">\n")
 			fun_count += 1
